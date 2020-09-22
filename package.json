@@ -1,0 +1,25 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "Generates Software Development team profiles using Inquirer",
+  "main": "Index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcobjj/team-profile-generator.git"
+  },
+  "author": "Marco Evangelista",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcobjj/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/marcobjj/team-profile-generator#readme",
+  "devDependencies": {
+    "jest": "^26.4.2"
+  }
+}
