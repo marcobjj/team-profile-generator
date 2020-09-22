@@ -26,7 +26,8 @@ test('creates an employee object', () => {
 test("gets employee's role in the company", () => {
     const employee = new Employee("Marco", "E279", "Marcobjj@gmail.com");
 
-    expect(employee.getRole()).toBe("Employee");
+    expect(employee.getRole()).toEqual(expect.stringContaining("Employee"));
+  
 });
 
 test("gets employee's email address", () => {
