@@ -1,51 +1,21 @@
 const template = require('./src/Template.js');
 const inquirer = require('inquirer');
 
+const Manager = require("./lib/Manager.js");
+const Engineer = require("./lib/Engineer.js");
+const Intern = require("./lib/Intern.js");
+
 const { generatePage, generateCard } = template;
 const employeeArr = [];
-let role = 'manager';
 
-console.log(generateCard("Marco Evangelista", "Id: 1001", "evangelistabjj@yahoo.com.br", "Manager", "Office Number:113322"), generatePage);
 
-// array of questions for user
-const questions = [
-    {
-        type: 'input',
-        name: 'name',
-        message: `Please enter ${role}'s name`,
-        validate: nameInput => nameInput ? true : false
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: `Please enter ${role}'s Emloyee ID`,
-        validate: nameInput => nameInput ? true : false
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: `Please enter ${role}'s email address`,
-        validate: nameInput => nameInput ? true : false
-    },
-    {
-        type: 'input',
-        name: 'officeNumber',
-        message: `Please enter ${role}'s Office Number`,
-        validate: nameInput => nameInput ? true : false
-    },
-    {
-        type: 'rawlist',
-        name: 'menu',
-        message: 'Would you like to add another Employee or finish building your team?',
-        choices: ['add Engineer', 'add Intern', 'Finish']
-    }
-];
+//console.log(generateCard("Marco Evangelista", "Id: 1001", "evangelistabjj@yahoo.com.br", "Manager", "Office Number:113322"), generatePage);
 
 // inquirer prompt
 const promptEmployee = (role) => {
     
-
-    return inquirer.prompt([
+    const questions =
+    [
         {
             type: 'input',
             name: 'name',
@@ -71,6 +41,18 @@ const promptEmployee = (role) => {
             validate: nameInput => nameInput ? true : false
         },
         {
+            type: 'input',
+            name: 'github',
+            message: `Please enter ${role}'s github page`,
+            validate: nameInput => nameInput ? true : false
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: `Please enter ${role}'s School name`,
+            validate: nameInput => nameInput ? true : false
+        },
+        {
             type: 'rawlist',
             name: 'menu',
             message: 'Would you like to add another Employee or finish building your team?',
@@ -78,9 +60,11 @@ const promptEmployee = (role) => {
         }
     ]
 
+    if(role == "Intern") questions.splice(3,2)
+    else if (role == "Engineer") {questions.splice(3,1); questions.splice(4,1);}
+    else questions.splice(4,2);
 
-
-    );
+    return inquirer.prompt(questions);
 };
 
 
@@ -92,28 +76,7 @@ const promptEmployee = (role) => {
 function init() {
 
     
-    promptEmployee('Team Manager')
-        .then(managerData => {
-
-            employeeArr.push(managerData);
-
-            switch (managerData.menu) {
-                case 'add Intern':
-                    newPrompt('Intern');
-                    break;
-                case 'add Engineer':
-                    newPrompt('Engineer');
-                    break;
-                case 'Finish':
-                    generateSite(employeeArr);
-
-
-            }
-
-
-        }
-
-        )
+   newPrompt('Team Manager')
 
 }
 
@@ -121,9 +84,9 @@ function newPrompt(role){
 
     promptEmployee(role)
     .then(managerData => {
-
-        employeeArr.push(managerData);
-        console.log(managerData.menu);
+        const emp  = build(managerData,role);
+        if(emp) employeeArr.push(emp);
+        //console.log(managerData.menu);
 
     switch (managerData.menu) {
         case 'add Intern':
@@ -142,28 +105,25 @@ function newPrompt(role){
 
 }
 
-const promptEngineer = () => {
+const build = (data,role) => {
 
-    var github =  {
-        type: 'input',
-        name: 'github',
-        message: "Please enter Engineer's github page",
-        validate: nameInput => nameInput ? true : false
-    }
+    //console.log(data.name,role,employeeArr.join());
 
-    questions.splice(3, 1, github);
-    inquirer.prompt(questions)
-
+    if(role.search("Engineer") >= 0) return new Engineer(data.name,data.id,data.email,data.github);
+    else if (role.search("Intern") >= 0) return new Intern(data.name,data.id,data.email,data.school);
+    else if (role.search("Manager") >= 0) return new Manager(data.name,data.id,data.email,data.officeNumber);
 }
 
-const promptIntern = () => {
-
-    
-}
 
 const generateSite = arr => {
+    const cardArr = [];
+    arr.forEach(element => {
+       
+        const card = generateCard(element.getName(),element.getId(),element.getEmail(),element.getRole(),element.getVariable());
+        cardArr.push(card);
+    });
 
-    console.log(arr.join());
+    console.log(generatePage(cardArr));
 }
 
 

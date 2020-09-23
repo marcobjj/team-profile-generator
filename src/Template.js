@@ -35,7 +35,7 @@ let generateCard = (name, id, email, role, variable) => {
 <div class="card">
     <div class="card-header fa bg-primary text-light h5">
         ${name} <br>
-        &#x${role}
+        ${role}
     </div>
     <div class="card-body px-4 pb-5 pt-5">
         <p class="card-text bg-info rounded p-1">${id}</p>
