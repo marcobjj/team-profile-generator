@@ -44,7 +44,7 @@ This is a 1-person student project for UC Berkeley bootcamp 2020 and not meant t
 ## Tests
 
 
-All four main classes in this project were tested with Jest test runner. The classes are Employee.js, Manager.js,Engineer.js, and Intern.js. The tests can be found in the folder named __tests__. Every variable and method within those four main classes passed their respective tests.  
+All four main classes in this project were tested with Jest test runner. The classes are Employee.js, Manager.js,Engineer.js, and Intern.js. The tests can be found in the folder named __ tests __ . Every variable and method within those four main classes has passed their respective tests.  You can watch them in the tutorial video posted in the usage chapter above, at the 3 minute mark.
 
 ## Installation
 
