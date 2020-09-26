@@ -13,7 +13,7 @@ const generatePage = cardArray => {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg d-flex justify-content-center bg-danger">
+    <nav class="navbar navbar-expand-lg d-flex justify-content-center bg-primary">
         <a class="navbar-brand text-light" href="#">My Team</a>
     </nav>
     <div class="container mt-5">
@@ -32,12 +32,12 @@ const generatePage = cardArray => {
 
 let generateCard = (name, id, email, role, variable) => {
    return `<div class="col-sm-3 m-1">
-<div class="card">
+<div class="card shadow">
     <div class="card-header fa bg-primary text-light h5">
         ${name} <br>
         ${role}
     </div>
-    <div class="card-body px-4 pb-5 pt-5">
+    <div class="card-body px-4 pb-5 pt-5 bg-warning">
         <p class="card-text bg-light rounded p-1">${id}</p>
         <p class="card-text bg-light rounded p-1">${email}</p>
         <p class="card-text bg-light rounded p-1">${variable}</p>

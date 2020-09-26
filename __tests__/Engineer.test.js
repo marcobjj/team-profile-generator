@@ -26,3 +26,11 @@ test("gets Engineer's role", () => {
    
   
 });
+
+test("gets Engineer's third row info", () => {
+    const engineer = new Engineer("Marco Evangelista", "E265", "evangelistabjj@yahoo.com.br","marcobjj");
+
+    expect(engineer.getVariable()).toEqual(expect.stringContaining("marcobjj"));
+   
+  
+});

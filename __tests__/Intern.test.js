@@ -19,11 +19,20 @@ test("gets Intern's school name", () => {
   
 });
 
-test("gets Engineer's role", () => {
+test("gets Intern's role", () => {
     const intern = new Intern("Marco Evangelista", "E265", "evangelistabjj@yahoo.com.br","UC Berkeley");
 
     expect(intern.getRole()).toEqual(expect.stringContaining("Intern"));
     expect(intern.getRole()).toEqual(expect.stringContaining("f19d"));
+   
+  
+});
+
+test("gets Intern's third row info", () => {
+    const intern = new Intern("Marco Evangelista", "E265", "evangelistabjj@yahoo.com.br","UC Berkeley");
+
+    expect(intern.getVariable()).toEqual(expect.stringContaining("UC Berkeley"));
+  
    
   
 });

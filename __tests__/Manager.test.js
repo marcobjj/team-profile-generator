@@ -37,15 +37,7 @@ test("gets Manager's name", () => {
 test("gets Manager's Id", () => {
     const manager = new Manager("Jose Mourinho", "E711", "littlemoor@chelsea.org",113322);
 
-    expect(manager.getId()).toBe("E711");
-   
-  
-});
-
-test("gets Manager's Id", () => {
-    const manager = new Manager("Jose Mourinho", "E711", "littlemoor@chelsea.org",113322);
-
-    expect(manager.getId()).toBe("E711");
+    expect(manager.getId()).toEqual(expect.stringContaining("E711"));
    
   
 });
@@ -53,8 +45,16 @@ test("gets Manager's Id", () => {
 test("gets Manager's office Number", () => {
     const manager = new Manager("Jose Mourinho", "E711", "littlemoor@chelsea.org",113322);
 
-    expect(manager.getOfficeNumber()).toBe(113322);
+    expect(manager.getOfficeNumber()).toEqual(expect.stringContaining("113322"));
    
   
 });
 
+test("gets Manager's third row info", () => {
+    const manager = new Manager("Jose Mourinho", "E711", "littlemoor@chelsea.org",113322);
+
+    expect(manager.getVariable()).toEqual(expect.stringContaining("113322"));
+
+});
+   
+  

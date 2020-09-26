@@ -31,5 +31,5 @@ test("gets employee's name", () => {
 test("gets employee's Id String", () => {
     const employee = new Employee("Marco", "E279", "Marcobjj@gmail.com");
 
-    expect(employee.getId()).toBe("E279");
+    expect(employee.getId()).toEqual(expect.stringContaining("E279"));
 });
